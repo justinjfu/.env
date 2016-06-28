@@ -42,6 +42,8 @@ set incsearch		" do incremental searching
 set pastetoggle=<F2>
 nnoremap ; :
 
+set modelines=1
+
 " Linewrap up/down
 nnoremap j gj
 nnoremap k gk
