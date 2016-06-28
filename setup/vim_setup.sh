@@ -1,4 +1,4 @@
-ENV_DIR='~/.env'
+source setup_common.sh
 echo 'Wiping .vimrc!'
 echo "source $ENV_DIR/.vimrc" > ~/.vimrc
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim

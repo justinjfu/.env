@@ -1,0 +1,27 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+#	name = Justin Fu
+#	email = justin@Justins-MacBook-Air.local
+    email = justinjfu@gmail.com
+    name = Justin Fu
+[core]
+    editor = /usr/bin/vim
+[filter "lfs"]
+    smudge = git-lfs smudge %f
+    required = true
+    clean = git-lfs clean %f
+[color]
+	ui = auto
+[diff]
+	renames = copies
+[merge]
+	stat = true
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  hist = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+  type = cat-file -t
+  dump = cat-file -p

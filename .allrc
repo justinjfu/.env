@@ -1,6 +1,17 @@
+# vim:ft=sh
 
 alias ls='ls -G'
 alias ll='ls -lha'
+
+# Git
+alias g='git '
+alias gs='git status '
+alias ga='git add '
+alias gb='git branch '
+alias gc='git commit '
+alias gd='git diff '
+alias go='git checkout '
+alias gh='git hist '
 
 export PATH=~/.mybin:$PATH
 
@@ -28,4 +39,5 @@ function sshgit {
     ssh-add ~/.ssh/github_lfd1
     ssh -T git@github.com
 }
+
 
