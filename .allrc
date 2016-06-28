@@ -1,0 +1,69 @@
+
+export PATH=~/.mybin:$PATH
+
+# Python-dev headers
+export CPATH=$CPATH:/System/Library/Frameworks/Python.framework/Headers
+
+#Theano
+#export CUDA_ROOT=/usr/local/cuda-6.5/bin
+#export THEANO_FLAGS='mode=FAST_RUN,device=gpu,floatX=float32'
+#alias theano_gpu='THEANO_FLAGS=device=gpu python'
+#alias theano_prof="THEANO_FLAGS=profile=True python"
+#alias theano_prof2="THEANO_FLAGS=mode='ProfileMode' python"
+#alias theano_cpu='THEANO_FLAGS=device=cpu python'
+
+#CGT
+#export CGT_HOME=~/code/cgt
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CGT_HOME/build/lib
+#export PYTHONPATH=$PYTHONPATH:$CGT_HOME:$CGT_HOME/build/lib
+
+#NNtools
+#export PYTHONPATH=$PYTHONPATH:~/code/nntools
+
+# Latex
+export PATH=$PATH:/usr/local/texlive/2015/bin/x86_64-darwin/
+
+#MRU
+#export PYTHONPATH=$PYTHONPATH:~/class/mru:~/code/gtd:~/code/stanza
+export MRU_LOG=~/class/mru/scripts/logs
+alias mru_tensorboard='tensorboard --logdir $MRU_LOG'
+export PGDATA=/usr/local/var/postgres
+
+#Codalab
+export CODALAB_CLI=/Users/justin/code/codalab-cli
+export PATH=$PATH:/Users/justin/code/codalab-cli/codalab/bin
+#. $CODALAB_CLI/rc
+alias cltunnel='ssh -N -n -L 12800:localhost:2800 -L 18000:localhost:8000 justinfu@codalab.stanford.edu'
+alias cldocker='docker run -t -i codalab/ubuntu:1.9'
+
+# GPS
+export PYTHONPATH=$PYTHONPATH:~/code/gps/python
+
+#JUSTIN MODS
+
+#export PYTHONPATH=$PYTHONPATH:~/code/justin_pylib
+#my_shutdown () { history -d $((HISTCMD-1)) && echo "thewhip1" | sudo -S shutdown now; }
+#alias pdb='python -m pdb'
+function pprofile {
+    python -m cProfile -o .profile.txt $1
+    #python -c 'import pstats; p=pstats.Stats(".profile.txt"); p.sort_stats("cumulative").print_stats(30)'
+    python -c 'import pstats; p=pstats.Stats(".profile.txt"); p.sort_stats("time").print_stats(30)'
+    rm .profile.txt
+}
+alias doctest='python -m doctest'
+alias pyprofile='python -m cProfile'
+alias pip='sudo pip'
+alias ack='ag'
+#alias tmux='tmux -2'
+#alias rnntmux='tmux -2 attach -t rnn'
+#alias inkscape="/Applications/Inkscape.app/Contents/Resources/bin/inkscape"
+alias un7zip='7z x '
+alias julia='/Applications/Julia-0.4.0.app/Contents/Resources/julia/bin/julia'
+function sshgit {
+    eval $(ssh-agent)
+    ssh-add ~/.ssh/github_lfd1
+    ssh -T git@github.com
+}
+
+#alias ngrok='ssh -X 0.tcp.ngrok.io -p 15473'
+
