@@ -22,6 +22,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
+Plugin 'file:///~/.vim/bundle/justin_mods'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -88,16 +89,6 @@ set backupdir=~/.vim/swp
 "NERDTree
 let g:NERDTreeMouseMode=2
 
-"" FuzzyFinder
-"let g:fuf_modesDisable = []
-"let g:fuf_mrufile_maxItem = 1000
-"let g:fuf_mrucmd_maxItem = 400 
-"let g:fuf_enumeratingLimit = 60
-"let g:fuf_mrufile_exclude = '\v\~$|\.(bak|sw[po])$|^(\/\/|\\\\|\/mnt\/)'
-"nnoremap <silent> <C-p>      :FufFile<CR>
-"nnoremap <C-R> :FufTag<CR>
-"map ,f :FufFile **/<CR>
-
 "" Minibufexpl
 let g:miniBufExplUseSingleClick = 1 
 
@@ -128,7 +119,6 @@ set laststatus=2  " Enable airline by default
 "let g:airline_symbols.paste = 'Þ'
 "let g:airline_symbols.paste = '∥'
 "let g:airline_symbols.whitespace = 'Ξ'
-
 "let g:tmuxline_powerline_separators = 0
 "let g:tmuxline_separators = {
 "    \ 'left' : '▶',
@@ -142,7 +132,6 @@ set laststatus=2  " Enable airline by default
 colorscheme Tomorrow-Night-Justin
 
 "Original settings
-"set nocompatible
 "source $VIMRUNTIME/vimrc_example.vim
 
 " Only do this part when compiled with support for autocommands.
@@ -179,4 +168,10 @@ else
 
 endif " has("autocmd")
 
-set paste
+
+if system("echo -n \"$(uname)\"") == "Darwin"
+    "Copy/Pasting on Mac
+    map <C-v> :r !pbpaste<CR>
+    map <C-c> :w !pbcopy<CR><CR>
+endif
+ 
