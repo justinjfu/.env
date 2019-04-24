@@ -1,0 +1,29 @@
+#!/usr/bin/python
+import os
+import imageio
+import numpy as np
+import argparse
+
+def parse_args():
+    parser = argparse.ArgumentParser(description='Stitch images into a GIF.')
+    parser.add_argument('pattern', help='Image id. Ex. "image_%%d.png"')
+    parser.add_argument('-f', '--fps', default=30, help='Frames per second')
+    parser.add_argument('-o', '--out', default='movie.gif', help='Output filename')
+    return parser.parse_args()
+
+
+if __name__ == "__main__":
+    args = parse_args()
+
+    images = []
+    for i in range(9999):
+        fname = args.pattern % i
+        if os.path.exists(fname):
+            print('Processing %s' % fname)
+            img = imageio.imread(fname)
+            images.append(img)
+        else:
+            print('Processed %d images' % i)
+            images = np.array(images)
+            imageio.mimsave(args.out, images, fps=args.fps)
+            break
