@@ -1,17 +1,16 @@
 
 call plug#begin('~/.config/nvim/plugged')
-" Plug 'roxma/nvim-completion-manager'
-Plug 'davidhalter/jedi-vim'   " jedi for python
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2' "neovim autocompletion
-Plug 'HansPinckaers/ncm2-jedi' "Python autocomplete
-Plug 'ncm2/ncm2-bufword' "Words in buffer completion
-Plug 'ncm2/ncm2-path' "Filepath completion
+" These plugins are super slow...
+" Plug 'davidhalter/jedi-vim'   " jedi  autocomplete
+" Plug 'roxma/nvim-yarp'
+" Plug 'ncm2/ncm2' "neovim autocompletion
+" Plug 'HansPinckaers/ncm2-jedi' "Python autocomplete
+" Plug 'ncm2/ncm2-bufword' "Words in buffer completion
+" Plug 'ncm2/ncm2-path' "Filepath completion
 
 Plug 'scrooloose/nerdtree'  " file list
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'  "to highlight files in nerdtree
-" Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Plug 'honza/vim-snippets'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'  " show git changes to files in gutter
@@ -26,7 +25,7 @@ call plug#end()
 
 " Color & Customization
 colorscheme lucius
-LuciusDark
+LuciusBlack
 "" LuciusBlack, LuciusDark, LuciusLight
 
 
@@ -37,7 +36,7 @@ endif
 set t_Co=256
 set nu  "Display line numbers
 set guioptions-=T "turn off toolbar
-"set nocompatible
+set nocompatible
 set incsearch		" do incremental searching
 set pastetoggle=<F2>
 set hidden
@@ -74,7 +73,7 @@ if !exists('g:airline_symbols')
 endif
 
 " ncm2 settings
-autocmd BufEnter * call ncm2#enable_for_buffer()
+" autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=menuone,noselect,noinsert
 set shortmess+=c
 inoremap <c-c> <ESC>
@@ -121,4 +120,7 @@ let g:ale_lint_on_save = 1
 "nerdtree
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeMouseMode=2
+"make buffer deleting play nice with nerdtree
+nnoremap b :bp\|bd #<CR> 
+
 

@@ -8,8 +8,11 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'fholgado/minibufexpl.vim'
+"" Plugin 'fholgado/minibufexpl.vim'
 Plugin 'scrooloose/nerdtree'
+Bundle 'jistr/vim-nerdtree-tabs'
+
+" Plugin 'vim-syntastic/syntastic'
 Plugin 'tomtom/tlib_vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'bling/vim-airline'
@@ -22,6 +25,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
+Plugin 'ervandu/supertab'
 Plugin 'file:///~/.vim/bundle/justin_mods'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -40,6 +44,7 @@ set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 set pastetoggle=<F2>
+set hidden
 nnoremap ; :
 
 set modelines=1
@@ -90,9 +95,8 @@ set backupdir=~/.vim/swp
 "Plugins
 "NERDTree
 let g:NERDTreeMouseMode=2
-
-"" Minibufexpl
-let g:miniBufExplUseSingleClick = 1 
+let g:NERDTreeCustomTabOpen=1
+command NT NERDTreeTabsOpen
 
 "" Airline
 "let g:airline#extensions#tabline#enabled = 1
@@ -100,41 +104,14 @@ let g:miniBufExplUseSingleClick = 1
 let g:airline#extensions#bufferline#enabled = 1
 let g:airline_theme="tomorrow"
 "set guifont=Liberation_Mono_for_Powerline:10 
-let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
  let g:airline_symbols = {}
 endif
 set laststatus=2  " Enable airline by default
 
-" unicode symbols - for powerline symbols that don't show
-"let g:airline_left_sep = '»'
-"let g:airline_left_sep = '▶'
-"let g:airline_left_sep = '>'
-"let g:airline_right_sep = '«'
-"let g:airline_right_sep = '◀'
-"let g:airline_right_sep = '<'
-"let g:airline_symbols.linenr = '␊'
-"let g:airline_symbols.linenr = '␤'
-"let g:airline_symbols.linenr = '¶'
-"let g:airline_symbols.branch = '⎇'
-"let g:airline_symbols.paste = 'ρ'
-"let g:airline_symbols.paste = 'Þ'
-"let g:airline_symbols.paste = '∥'
-"let g:airline_symbols.whitespace = 'Ξ'
-"let g:tmuxline_powerline_separators = 0
-"let g:tmuxline_separators = {
-"    \ 'left' : '▶',
-"    \ 'left_alt': '>',
-"    \ 'right' : '◀',
-"    \ 'right_alt' : '<',
-"    \ 'space' : ' '}
-"let g:tmuxline_preset = 'full'
-
 " Color & Customization
 colorscheme Tomorrow-Night-Justin
-
-"Original settings
-"source $VIMRUNTIME/vimrc_example.vim
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")

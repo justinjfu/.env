@@ -20,9 +20,6 @@ export PATH=$ENV_DIR/bin:$PATH
 # Python-dev headers
 export CPATH=$CPATH:/System/Library/Frameworks/Python.framework/Headers
 
-alias cltunnel='ssh -N -n -L 12800:localhost:2800 -L 18000:localhost:8000 justinfu@codalab.stanford.edu'
-alias cldocker='docker run -t -i codalab/ubuntu:1.9'
-
 #JUSTIN MODS
 alias pdb='python -m pdb'
 function pprofile {
@@ -41,5 +38,4 @@ function sshgit {
     ssh-add ~/.ssh/github_lfd1
     ssh -T git@github.com
 }
-
 

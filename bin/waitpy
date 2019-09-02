@@ -1,0 +1,16 @@
+#!/usr/bin/python
+import argparse
+import time
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Wait for a certain amount of time')
+    parser.add_argument('-o', '--hours', type=int, default=0, help='Number of hours to wait')
+    parser.add_argument('-m', '--minutes', type=int, default=0, help='Number of minutes to wait')
+    parser.add_argument('-s', '--seconds', type=int, default=0, help='Number of seconds to wait')
+
+    args = parser.parse_args()
+    total_time = args.seconds + 60*args.minutes + 3600*args.hours
+    time.sleep(total_time)
+    print 'Slept for %s, (total %d seconds)' % (args, total_time)
+
+

@@ -1,0 +1,16 @@
+#!/usr/bin/python
+import argparse
+import scipy.io
+import pandas as pd
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Wait for a certain amount of time')
+    parser.add_argument('file', type=str, help='File to inspect')
+    #parser.add_argument('-s', '--seconds', type=int, default=0, help='Number of seconds to wait')
+    args = parser.parse_args()
+
+    mat = scipy.io.loadmat(args.file)
+    mat = {k:v.squeeze() for k, v in mat.items() if k[0] != '_' and len(v.squeeze().shape)==1}
+    data = pd.DataFrame({k: pd.Series(v) for k, v in mat.items()})
+    data.to_csv(args.file+".csv")
+

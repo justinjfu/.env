@@ -1,0 +1,15 @@
+#!/usr/bin/python
+import argparse
+import h5py
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Wait for a certain amount of time')
+    parser.add_argument('file', type=str, help='File to inspect')
+    #parser.add_argument('-s', '--seconds', type=int, default=0, help='Number of seconds to wait')
+    args = parser.parse_args()
+
+    f = h5py.File(args.file, 'r')
+    for field in f:
+        print('%s:\t%s' % (field,f[field]))
+
+
