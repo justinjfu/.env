@@ -5,4 +5,5 @@ import numpy as np
 fname = sys.argv[1]
 nparr = np.load(fname)
 print(nparr)
+print(np.mean(nparr, axis=0))
 

@@ -20,6 +20,18 @@ export PATH=$ENV_DIR/bin:$PATH
 # Python-dev headers
 export CPATH=$CPATH:/System/Library/Frameworks/Python.framework/Headers
 
+# Python venv switching
+export VENVS_DIR=$HOME/.venvs
+venv () {
+    source $VENVS_DIR/$1/bin/activate
+}
+_venv()
+{
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $(compgen -W "$(ls $VENVS_DIR)" -- $cur) )
+}
+complete -F _venv venv
+
 #JUSTIN MODS
 alias pdb='python -m pdb'
 function pprofile {
